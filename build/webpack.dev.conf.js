@@ -17,6 +17,18 @@ module.exports = merge(baseConfig, {
     // when serving the html from in-memory
     publicPath: '/'
   },
+  module: {
+    loaders: [
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css']
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass']
+      }
+    ]
+  },
   vue: {
     loaders: cssLoaders({
       sourceMap: false,

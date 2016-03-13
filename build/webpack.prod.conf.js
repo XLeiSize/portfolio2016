@@ -1,7 +1,6 @@
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseConfig = require('./webpack.base.conf')
-var cssLoaders = require('./css-loaders')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -17,11 +16,17 @@ module.exports = merge(baseConfig, {
     filename: '[name].[chunkhash].js',
     chunkFilename: '[id].[chunkhash].js'
   },
-  vue: {
-    loaders: cssLoaders({
-      sourceMap: SOURCE_MAP,
-      extract: true
-    })
+  module: {
+    loaders: [
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css!autoprefixer?browsers=last 2 version')
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', 'css!autoprefixer?browsers=last 2 version!sass')
+      }
+    ]
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/workflow/production.html
@@ -47,8 +52,8 @@ module.exports = merge(baseConfig, {
       inject: true,
       minify: {
         removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
+        collapseWhitespace: false,
+        removeAttributeQuotes: false
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       }
