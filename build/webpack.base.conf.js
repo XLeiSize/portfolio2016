@@ -52,7 +52,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'vue-html'
+        loader: 'raw'
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
