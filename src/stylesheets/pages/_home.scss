@@ -1,0 +1,168 @@
+#home {
+  width: 100vw;
+  height: 100vh;
+
+  .list-container {
+
+    position:absolute;
+    top:50vh;
+    transform:translateY(-50%);
+    left:10vw;
+
+    .title {
+      overflow: visible;  
+
+      h1 {
+        color:$white;
+        font-size: 4rem;
+        font-weight: 900;
+        display: block;
+        background-image: url('/static/img/bg/fire.png');
+        background-repeat: no-repeat;
+        background-size: 150% 150%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+        background-color: $purple;
+        -webkit-animation: animatedBackground 20s ease infinite;
+        -moz-animation: animatedBackground 20s ease infinite;
+        animation: animatedBackground 20s ease infinite; 
+
+        strong{
+          font-weight: normal;
+          font-size: 5rem;
+          vertical-align: baseline;
+          line-height: 5rem;
+          letter-spacing: 0.2rem;
+          text-transform: uppercase;
+          font-weight: 900;
+          // font-family: 'the citizens', 'aileron', Helvetica, sans-serif;
+        }
+        
+        span {
+          letter-spacing: 3.4rem;
+        } 
+
+        small {
+          vertical-align: top;
+          padding-top: 0.5rem;
+          font-size: 0.8rem;
+          font-weight: 800;
+          letter-spacing: 0.7rem;
+          word-spacing: 2rem;
+          text-transform: uppercase;
+        }
+
+      }
+      
+      h2 {
+        padding-top: 0.5rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+        letter-spacing: 0.7rem;
+        text-transform: uppercase;
+
+        span {
+          letter-spacing: 1.08rem;
+        }
+        
+      }
+    }
+
+    .projects{
+      font-weight: 800;
+      text-transform: uppercase;
+      color:$black;
+
+      ul{
+        width:50vw;
+
+        li.projects__item{
+          position:relative;
+          padding:2rem 0;
+          transition:0.3s all ease;
+
+          p.name{
+            display: inline-block;
+            position:relative;
+            width:100%;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 1rem;
+            z-index: 1;
+
+
+            &:after, &:before{
+              opacity: 0;
+              transition: 0.2s all ease;
+            }
+
+          }
+          .technos{
+            display: inline-block;
+            position: absolute;
+            color: $white;
+            opacity: 0;
+            left:-3rem;
+            font-weight: 600;
+            top:1rem;
+            font-size: 5rem;
+            transition: 0.2s all ease;
+
+          }
+
+          &:hover, &.active{
+            cursor:pointer;
+            margin-left: 5px;
+
+            .technos {
+              opacity: 0.2;
+            }
+
+            .name {
+              color:#FF0000;
+
+              &[data-text]:after, &[data-text]:before{
+                content: attr(data-text);
+                position: absolute;
+                left: 1px;
+                top:1px;
+                color: $white;
+                top:0rem;
+                opacity: 0.7;
+                z-index: 0;
+              }
+              
+              &[data-text]:before{
+                left: 2px;
+                top:1px;
+                color: #0000FF;
+              }
+
+            }
+
+          }
+        }
+      }
+    }
+
+  }
+
+  .display-project {
+    float: right;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: repeat;
+    background-size: cover;
+    transition: 0.3s all ease; 
+
+  }
+
+  #project {
+        width:100vw;
+        height: 100vh;
+      }
+
+}

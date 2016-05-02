@@ -1,0 +1,136 @@
+#career{
+	background-color: #444;
+
+	.articles {
+		position: relative;
+    overflow: hidden;
+		&__nav {
+			position: absolute;
+			z-index: 100;
+			right: 5vw;
+      top: 50vh;
+      transform: translateY(-50%);
+
+			&__item {
+				position: relative;
+
+				&__elem {
+					display: block;
+          cursor: pointer;
+					box-sizing: border-box;
+					padding: 12px;
+
+
+					&:hover {
+						.date {
+							opacity: 0.4;
+						}
+
+            .line {
+              width: 60px;
+            }
+					}
+
+					&.active {
+						.line {
+              width: 90px;
+            }
+					}
+
+					.line {
+						position: relative;
+						float: right;
+						width: 40px;
+						height: 2px;
+						background-color: $yellow;
+            transition: 0.15s all ease-out;
+
+						&:before {
+							content: '';
+							width: 30px;
+							height: 1px;
+							position: absolute;
+							top: -12px;
+							right: 0;
+							opacity: 0.6;
+							background-color: $yellow;
+						}
+					}
+
+					.date {
+						width: auto;
+						position: absolute;
+						top: 0;
+						left: 0;
+						transform: translateX(-110%);
+						font-size: 1,25rem;
+						color: $white;
+	          text-transform: uppercase;
+						opacity: 0;
+	          transition: 0.2s opacity ease-in-out;
+						white-space: nowrap;
+					}
+				}
+
+				&:last-child {
+					.line:after {
+						content: '';
+						width: 30px;
+						height: 1px;
+						position: absolute;
+						bottom: -12px;
+						right: 0;
+						opacity: 0.6;
+						background-color: $yellow;
+					}
+				}
+			}
+		}
+
+    .season {
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      line-height: 11rem;
+      font-size: 15rem;
+      font-weight: bolder;
+      color: $white;
+      opacity: 0.2;
+    }
+
+    .article {
+      position: absolute;
+      top: 40vh;
+      transform: translateY(-50%);
+      left: 10vw;
+
+      &__image {
+        display:block;
+        width: 40vh;
+        height: 60vh;
+				object-fit: cover;
+      }
+
+      &__titles {
+        position: absolute;
+        top: 50%;
+        left: 95%;
+        transform: translateY(-50%);
+        width:  30vw;
+        padding: 20px;
+        background-color: #ffffff;
+				transform-origin: left center;
+
+        h2 {
+          color: $purple;
+          text-align: center;
+          margin: 15px 0 20px 0;
+        }
+        p {
+          color: $black;
+          line-height: 1.2rem;
+        }
+      }
+    }
+	}
+}
