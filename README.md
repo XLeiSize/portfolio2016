@@ -1,6 +1,6 @@
-# vue-starter
+# portfolio2016
 
-> Vue.js starter
+> Portfolio 2016
 
 ## Build Setup
 
