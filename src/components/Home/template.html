@@ -1,29 +1,73 @@
-<div id="home">
+<div id="home"  v-on:mousemove="updateMask()">
+  <div class="title">
+    <h1>
+      <strong>Xing <br>
+      Lei</strong> 
+    </h1>
+  </div>
+
+  <div class="about">
+    <h2>About</h2>
+  </div>
+
   <section class="list-container">
-    <div class="title">
-      <h1>
-        <strong>Xing Lei</strong> 
-        <br>
-        <small>Creative  Developer</small>
-      </h1>
-      <h2></h2> 
-    </div>
-    <div class="projects">
+    
+    <div class="projects works">
+      <h2>WORKS</h2>
       <ul>
         <li class="projects__item" 
             v-for="(index, project) project in projects" 
-            v-on:mouseover="showProject(index)" 
+            v-on:mouseover="previewProject(index)" 
+            v-on:click="showProject(index)" 
+            v-bind:class="{ 'active': project.default }"
             v-on:mouseout="hideProject(index)" 
-            v-on:mousemove="updateProject()"
+            v-if="project.category == 'works'"
+
         >
-          <p class="name" data-text='{{project.name}}'>{{project.name}}</p>
+          <p class="name">{{project.name}}</p>
+          <span class="technos">{{project.technos}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="projects wip">
+      <h2>WIP</h2>
+      <ul>
+        <li class="projects__item" 
+            v-for="(index, project) project in projects" 
+            v-on:mouseover="previewProject(index)" 
+            v-on:click="showProject(index)" 
+            v-bind:class="{ 'active': project.default }"
+            v-on:mouseout="hideProject(index)" 
+            v-if="project.category == 'WIP'"
+
+        >
+          <p class="name">{{project.name}}</p>
           <span class="technos">{{project.technos}}</span>
         </li>
       </ul>
     </div>
   </section>
   
+
   <section class="display-project">
   </section>
+
+  <section class="project-infos" v-show="currentProject" transition="reveal">
+    <p class="project-infos__description">
+      {{currentProject.description}}
+    </p>
+    <a href="{{currentProject.link}}">
+      <button class="project-infos__button">
+        <svg>
+          <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+        </svg>
+        {{currentProject.button}}
+      </button>
+    </a>
+  </section>
+
+   <section class="mask">
+   </section>
 
 </div>

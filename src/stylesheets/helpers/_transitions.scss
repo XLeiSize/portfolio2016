@@ -1,0 +1,15 @@
+.reveal-transition {
+  width:100vw;
+  height:100vh;
+  position: absolute;
+  z-index: 5;
+  padding-top: 0px;
+  transition: all 0.5s ease;
+}
+
+/* .reveal-enter defines the starting state for entering */
+/* .reveal-leave defines the ending state for leaving */
+.reveal-enter, .reveal-leave {
+  padding-top: -100px;
+  opacity: 0;
+}
