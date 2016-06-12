@@ -1,13 +1,19 @@
 $offset : 2.5vw;
 
 #home {
+  position:relative;
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   background-color: $black;
 
+  @media screen and (max-width: 640px) {
+    overflow:visible;
+  }
+
   .title {
       position: absolute;
-      z-index: 10;
+      z-index: 100;
       overflow: visible;  
       position: absolute;
       top: $offset;
@@ -78,19 +84,24 @@ $offset : 2.5vw;
       color:$white;
       width:27vw;
 
+      @media screen and (max-width: 640px) {
+        width:70vw;
+      }
+
       &:first-child{
-        padding-bottom: 1rem;
+        padding-bottom: 3.5rem;
       }
 
       h2{
         width: auto;
         text-align: right;
-        font-size: 0.8rem;
+        font-size: 1.1rem;
         color: darken($white, 50);
         padding-bottom: 5px;
         // border-bottom: 2px solid #FFF;
         margin-bottom: 1rem;
         margin-right: 0;
+
       }
 
       ul{
@@ -99,7 +110,14 @@ $offset : 2.5vw;
           position:relative;
           text-align: right;
           padding:0.2rem 0;
-          transition:0.3s all ease;
+          transition:0.3s all ease-out;
+
+          .preload{
+            img{
+              width:1px;
+              opacity:0;
+            }
+          }
 
           p.name{
             display: inline-block;
@@ -110,6 +128,10 @@ $offset : 2.5vw;
             letter-spacing: 0.4rem;
             z-index: 1;
             transition: 0.2s all ease;
+
+            @media screen and (max-width: 640px) {
+              font-size: 0.8rem;
+            }
 
 
             &::after, &::before{
@@ -136,6 +158,11 @@ $offset : 2.5vw;
             font-size: 0.8rem;
             line-height:3rem;
             transition: 0.2s all ease;
+
+            @media screen and (max-width: 640px) {
+              font-size: 0.6rem;
+              line-height:1rem;
+            }
           }
 
           &:hover, &.active{
@@ -176,8 +203,8 @@ $offset : 2.5vw;
     width: 100vw;
     height: 100vh;
     background-size: cover;
-    background-position: center;
-    transition: 1s all ease; 
+    background-position: center center;
+    transition: 1s all ease;
   }
 
   .project-infos {
@@ -193,6 +220,12 @@ $offset : 2.5vw;
       font-size:0.7rem;
       letter-spacing:0.2rem;
       transition: 0.5s all ease; 
+
+      @media screen and (max-width: 640px) {
+        display: none;
+        bottom : 80px;
+        width:50vw;
+      }
     }
 
     &__button{
@@ -202,6 +235,7 @@ $offset : 2.5vw;
       left:50vw;
       transform: translateX(-50%);
       box-sizing:border-box;
+      outline: none;
       width: 300px;
       font-size: 0.7rem;
       background: none;
@@ -265,6 +299,7 @@ $offset : 2.5vw;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c3d3d3d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     background-repeat: no-repeat;
     background-size: 200%;
+    background-position: -75vw;
 
   }
 
@@ -273,4 +308,122 @@ $offset : 2.5vw;
     height: 100vh;
   }
 
+  #about {
+    width:100vw;
+    height: 100vh;
+    position: absolute;
+    display:none;
+    top: -100vh;
+    left: 0;
+    z-index: 50;
+    background-color: $black;
+    display:none;
+    opacity: 1;
+
+    @media screen and (max-width: 640px) {
+        position: relative;
+        min-height: 100vh;
+        height: auto ;
+      }
+
+    .close{
+      @extend .about;
+      position: absolute;
+      right: 2.5vw;
+      top: 2.5vw;
+    }
+
+    .about__img{
+      display: block;
+      width:40vw;
+      height:100vh;
+      position: absolute;
+      left: 0;
+      top:0;
+      background-image: url('/static/img/lei1.jpg');
+      background-size: cover;
+      background-position: top center;
+
+      @media screen and (max-width: 640px) {
+        position: relative;
+        display: block;
+        width:100vw;
+        height: 50vh;
+        transform: none;
+      }
+    }
+
+    .about__content{
+      width: 40vw;
+      position: absolute;
+      left: 45vw;
+      top: 60%;
+      transform: translateY(-50%);
+      line-height: 2rem;
+      font-size: 0.8rem;
+      letter-spacing:0.2rem;
+
+      @media screen and (max-width: 640px) {
+        position: relative;
+        display: block;
+        width:90vw;
+        top: 0;
+        right: 0;
+        left: 50%;
+        margin-top: 20px;
+        transform: translateX(-50%);
+      }
+
+      ul{
+        margin-top: 50px;
+        text-align: center;
+        li{
+          display: inline-block;
+          width: 100px;
+          margin: 10px;
+
+          &:first-child{
+            margin-left: 0;
+          }
+
+          a{
+            color: $white;
+            text-decoration: none;
+            position: relative;
+            transition: 0.3s all ease;
+
+            &::after{
+              content: "";
+              display: block;
+              position: absolute;
+              z-index: -1;
+              left:0;
+              bottom: 0;
+              background-color: $blue;
+              width: 100px;
+              height: 1px;
+              transition: 0.3s all ease;
+            }
+
+            @media screen and (max-width: 640px) {
+              background-color: $blue;
+              color: $black;
+            }
+
+            &:hover{
+              border: none;
+              color: $black;
+              
+              text-align: center;
+
+              &::after{
+                
+                height: 33px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -7,13 +7,12 @@
   </div>
 
   <div class="about">
-    <h2>About</h2>
+    <h2 v-on:click="showAbout()">About Me</h2>
   </div>
 
   <section class="list-container">
     
     <div class="projects works">
-      <h2>WORKS</h2>
       <ul>
         <li class="projects__item" 
             v-for="(index, project) project in projects" 
@@ -23,16 +22,14 @@
             v-on:mouseout="hideProject(index)" 
             v-if="project.category == 'works'"
 
-        >
+        > 
+          <div class="preload">
+            <img src="{{project.img}}" alt="">
+          </div>
           <p class="name">{{project.name}}</p>
           <span class="technos">{{project.technos}}</span>
         </li>
-      </ul>
-    </div>
 
-    <div class="projects wip">
-      <h2>WIP</h2>
-      <ul>
         <li class="projects__item" 
             v-for="(index, project) project in projects" 
             v-on:mouseover="previewProject(index)" 
@@ -41,7 +38,10 @@
             v-on:mouseout="hideProject(index)" 
             v-if="project.category == 'WIP'"
 
-        >
+        > 
+          <div class="preload">
+            <img src="{{project.img}}" alt="">
+          </div>
           <p class="name">{{project.name}}</p>
           <span class="technos">{{project.technos}}</span>
         </li>
@@ -55,9 +55,12 @@
 
   <section class="project-infos" v-show="currentProject" transition="reveal">
     <p class="project-infos__description">
+      <span v-if="currentProject.category == 'WIP'">
+        - Work in progress - <br>
+      </span>
       {{currentProject.description}}
     </p>
-    <a href="{{currentProject.link}}">
+    <a href="{{currentProject.link}}" target="_blank">
       <button class="project-infos__button">
         <svg>
           <rect x="0" y="0" fill="none" width="100%" height="100%"/>
@@ -68,6 +71,29 @@
   </section>
 
    <section class="mask">
+   </section>
+
+   <section id="about">
+    <span class="close"
+          v-on:click="hideAbout()"
+      >
+        My Works
+      </span>
+     <div class="about__img"></div>
+     <div class="about__content">
+      
+       <p>
+         Hey !<br>
+         I'm Lei, a French Creative Developer. I'm 21 years old and currently studying Interactive Design at Gobelins, l'école de l'image in Paris. <br> 
+         I'm looking for an apprenticeship for the next two years.
+       </p>
+
+       <ul>
+         <li><a href="mailto:lei.xing@hotmail.fr">Say hi !</a></li>
+         <li><a href="https://fr.linkedin.com/in/lei-xing-34ba86a8" target="_blank">Linkedin</a></li>
+         <li><a href="https://github.com/XLeiSize" target="_blank">Github</a></li>
+       </ul>
+      </div>
    </section>
 
 </div>

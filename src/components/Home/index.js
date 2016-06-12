@@ -29,16 +29,13 @@ export default Vue.extend({
         })
         tl.from(el, 0.1, {
           opacity: 0,
-          y: 200,
+          y: 300,
           ease: Power0.easeInOut
         })
         tl.to(el, 0.1, {
           opacity: 1,
           y: 0,
           ease: Power0.easeInOut
-        })
-        tl.add(function () {
-          this.currentProject = this.projects[index]
         })
         document.querySelector('.display-project').style.backgroundImage = 'url(' + this.projects[index].img + ')'
         let current = document.querySelectorAll('.projects__item')[index]
@@ -58,6 +55,28 @@ export default Vue.extend({
     },
     hideProject (index) {
       document.querySelector('.display-project').style.backgroundImage = 'url(' + this.currentProject.img + ')'
+    },
+    showAbout () {
+      document.querySelector('#about').style.display = 'block'
+      let el = document.querySelector('#about')
+      let tl = new TimelineMax({
+        delay: 0
+      })
+      tl.to(el, 0.5, {
+        y: window.innerHeight,
+        ease: Cubic.In
+      })
+    },
+    hideAbout () {
+      let el = document.querySelector('#about')
+      let tl = new TimelineMax({
+        delay: 0.2
+      })
+      tl.to(el, 1, {
+        y: -window.innerHeight,
+        ease: Cubic.Out
+      })
+      // document.querySelector('#about').style.display = 'none'
     }
   }
 })
